@@ -12,6 +12,7 @@ def out(result):
     f.close()
 
 def isPalindrome(a):
+#   palindrome일 경우 단순히 뒤집은 결과와 원래 결과가 같으면 됨
     a = a.casefold()
     b = ''.join(reversed(a))
 
@@ -21,6 +22,7 @@ def isPalindrome(a):
         return 1
 
 def isPseudo(a):
+#   psudo palindrome일 경우 글자를 index를 증가시키며 한 자리씩 빼서 뒤집은 결과가 같으면 됨
     leng = len(a)
 
     for i in range(leng):
