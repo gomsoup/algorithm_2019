@@ -17,24 +17,13 @@ int isPalin(string a) {
 }
 
 int isPseudo(string a) {
-	while(a.front() == a.back()){
-		a.pop_back();
-		a.erase(0,1);
-	} // 다른 부분이 나올 때 까지 앞뒤로 pop
+	for (int i = 0; i < a.size(); i++) {
+		string b = a;
+		b.erase(i, 1);
 
-	string tmp = a;
-
-	// case 1. 앞에서 빼기
-	tmp.erase(0,1);
-	if(isPalin(tmp) == 0)
-		return 0;
-	
-	// case2. 뒤에서 빼기
-	tmp = a;
-	tmp.pop_back();
-	if(isPalin(tmp) == 0)
-		return 0;
-	
+		if (isPalin(b) == 0)
+			return 0;
+	}
 	return 1;
 }
 
@@ -43,7 +32,7 @@ int main() {
 	vector <string> lists;
 	vector <int> results;
 
-	ifstream inp("palin.inp");
+	ifstream inp("1.inp");
 	string tmp;
 	inp >> len;
 
