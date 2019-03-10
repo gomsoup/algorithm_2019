@@ -5,10 +5,9 @@
 using namespace std;
 
 class Vector {
-private:
+public:
 	float x = 0, y = 0, z = 0;
 
-public:
 	Vector() {
 		x = 0; y = 0; z = 0;
 	}
@@ -29,6 +28,9 @@ public:
 		z = this->z - v.z;
 		return Vector(x, y, z);
 	}
+	float operator^(Vector v) { // dot product
+		return x * v.x + y * v.y + z * v.z;
+	}
 	Vector operator*(Vector v) { // cross product
 		float x, y, z;
 		x = this->y * v.z - this->z * v.y;
@@ -47,9 +49,15 @@ public:
 float getShortDistance(Vector a, Vector b, Vector p) {
 	Vector AB = b - a;
 	Vector AP = p - a;
-	Vector square = AB * AP;
-	return  square.size() / AB.size();
-	
+	Vector BP = p - b;
+
+	if ((AP^AB) <= 0) // point behind a
+		return AP.size();
+
+	if ((BP^AB) >= 0) // point behind b
+		return BP.size();
+
+	return (AB*AP).size() / AB.size();
 }
 
 int getSolution(float f) {
@@ -63,7 +71,7 @@ int getSolution(float f) {
 }
 
 void input(Vector &a, Vector &b, Vector& p) {
-	ifstream inp("bridge.inp");
+	ifstream inp("1.inp");
 	float x, y, z;
 
 	inp >> x >> y >> z;
