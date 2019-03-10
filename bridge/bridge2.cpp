@@ -58,13 +58,13 @@ float getShortDistance(Vector a, Vector b, Vector p) {
 	vector <Vector> v;
 	vector <float> result;
 
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 1000; i++) {
 		x = (b ^ t) + (a ^ (1 - t));
 		v.push_back(x);
-		t += 0.01;
+		t += 0.001;
 	}
 	
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < 1000; i++) {
 		float d = sqrt(pow(v[i].x - p.x, 2) + pow(v[i].y - p.y, 2) + pow(v[i].z - p.z, 2));
 		result.push_back(d);
 	}
