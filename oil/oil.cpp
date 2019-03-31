@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "oil.h"
 
 using namespace std;
