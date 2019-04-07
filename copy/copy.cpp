@@ -11,18 +11,12 @@ vector <int> lcs;
 vector <double> result;
 vector <wstring> s;
 
-
-void replaceSpace(wstring &str){
-    wregex reg(L"[\\s]+");
-    
-    str = regex_replace(str, reg, L" ");
-    
-}
-
 void replaceAll(wstring &str){
     wregex reg1(L"[을|를]");
     wregex reg2(L"[은|는]");
+   	wregex reg(L"[\\s]+");
     
+    str = regex_replace(str, reg, L" ");
     str = regex_replace(str, reg1, L"을");
     str = regex_replace(str, reg2, L"은");
 }
@@ -68,12 +62,9 @@ int LCS(wstring &a){
 
 void sort(){
     replaceAll(q);
-    replaceSpace(q);
     
     for(int i=0; i<s.size(); i++){
         replaceAll(s[i]);
-        replaceAll(s[i]);
-        replaceSpace(s[i]);
     }
 }
 
