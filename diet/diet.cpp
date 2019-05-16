@@ -51,9 +51,6 @@ bool isSatisfyMinimum(nutrient a){
 void backtrack(int index, vector <int> result, nutrient nu){
     nu = nu + list[index];
     
-    if(result[0] == 0 && result[1] == 1 && result[2] == 0 && result[3] == 1 && index == 5)
-        cout << endl;
-    
     if(!isSatisfyMinimum(nu)){
         if(index == list.size() -1) ret;
         if(maxCost < nu.cost){
