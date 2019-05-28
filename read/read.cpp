@@ -2,6 +2,7 @@
 #include <fstream>
 #include <iterator>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
 vector <string> s(500000); // pre-scaling for memory allocation speed issue
@@ -18,7 +19,7 @@ void input(){
 
 void output(){
     ofstream out("./read.out");
-    out << s[idx] << endl;
+    out << s[idx];
     out.close();
 }
 
