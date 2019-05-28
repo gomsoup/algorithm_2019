@@ -113,6 +113,7 @@ void forThread(int idx){
     
 }
 
+int main() __attribute__((optimize("-O2")));
 
 int main(){
     clock_t start = clock();
