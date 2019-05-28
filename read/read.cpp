@@ -33,7 +33,7 @@ void count() {
 	while (it != s.end()) {
 		auto it2 = next(it, 1);
 
-		if (it == it2) cnt++;
+		if (*it == *it2) cnt++;
 		else if (max >= cnt) cnt = 0;
 		else {
 			max = cnt;
