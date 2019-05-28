@@ -24,18 +24,21 @@ void output(){
 
 void count(){
     int max = 0, cnt = 0;
-    
-    for(auto it = s.begin(); it != s.end(); it++){
-        auto it2 = next(it, 1);
+	auto it = s.begin();
 
-		if (*it != *it2 && max < cnt) {
+	while (it != s.end()) {
+		auto it2 = next(it, 1);
+
+		if (*it == *it2) cnt++;
+		else if (max >= cnt) cnt = 0;
+		else {
 			max = cnt;
 			idx = distance(s.begin(), it);
 			cnt = 0;
 		}
-		else if (*it != *it2 && max >= cnt) cnt = 0;
-		else cnt++;
-    }
+		
+		it++;
+	}
 }
 
 int main() {
