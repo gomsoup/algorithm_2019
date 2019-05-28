@@ -24,6 +24,8 @@ void output(){
 
 void count(){
     int max = 0, cnt = 0;
+
+	sort(s.begin(), s.end());
 	auto it = s.begin();
 
 	while (it != s.end()) {
@@ -43,7 +45,6 @@ void count(){
 
 int main() {
     input();
-    sort(s.begin(), s.end());
     count();
     output();
     return 0;
