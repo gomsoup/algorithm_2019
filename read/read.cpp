@@ -4,8 +4,9 @@
 #include <vector>
 using namespace std;
 
-vector <string> s(500000); // pre-scaling for memory allocation for speed issue
+vector <string> s(500000); // pre-scaling for memory allocation speed issue
 int idx = 0;
+
 void input(){
     int n = 0;
     ifstream inp("./read.inp");
@@ -17,7 +18,7 @@ void input(){
 
 void output(){
     ofstream out("./read.out");
-    out << "hi" << endl << s[idx] << endl;
+    out << s[idx] << endl;
     out.close();
 }
 
@@ -26,14 +27,14 @@ void count(){
     
     for(auto it = s.begin(); it != s.end(); it++){
         auto it2 = next(it, 1);
-        if(*it == *it2) cnt++;
-        else{
-            if(max < cnt){
-                max = cnt;
-                idx = distance(s.begin(), it);
-            }
-            cnt = 0;
-        }
+
+		if (*it != *it2 && max < cnt) {
+			max = cnt;
+			idx = distance(s.begin(), it);
+			cnt = 0;
+		}
+		else if (*it != *it2 && max >= cnt) cnt = 0;
+		else cnt++;
     }
 }
 
