@@ -10,7 +10,7 @@ int idx = 0;
 
 void input() {
 	int n = 0;
-	ifstream inp("./1.inp");
+	ifstream inp("./read.inp");
 	while (!inp.eof()) {
 		inp >> s[n++];
 	}
