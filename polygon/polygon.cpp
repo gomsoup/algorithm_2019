@@ -31,6 +31,10 @@ public:
 		return x * d.y - y * d.x;
 	}
 
+	double norm() {
+		return x * x + y * y;
+	}
+
 };
 
 vector <dot* > dots; bool none = false;
@@ -41,17 +45,6 @@ bool onLine(dot p, dot q, dot r) {
 		return true;
 
 	return false;
-}
-
-int ccw(dot p, dot q, dot r){
-	int a = p.x * q.y + q.x * r.y + r.x * p.y;
-	int b = p.y * q.x + q.y * r.x + r.y * p.x;
-	int t = a - b;
-
-	if (t < 0) return -1;
-	else if (t == 0) return 0;
-
-	return 1;
 }
 
 bool isIntersect(dot p1, dot q1, dot p2, dot q2) {
@@ -75,13 +68,13 @@ bool isIntersect(dot p1, dot q1, dot p2, dot q2) {
 int calcAngle(dot p, dot q, dot r) {
 	dot ab = q - p;
 	dot bc = q - r;
-	double pi = 3.14;
+	double pi = 3.14159265359;
 
 	double s = atan2(ab ^ bc, ab * bc);
 	if (s < 0) s += 2 * pi;
 
-	double d;
-	d = s * 180 / pi;
+	int d = s * 180 / pi;
+
 	if (d >= 180) 
 		cnt++;
 
@@ -144,9 +137,8 @@ int main() {
 		a = *dots[i]->prev; b = *dots[i]; c = *dots[i]->next;
 
 		double s = calcAngle(a, b, c);
-
 	}
-	
+
 	output();
 	return 0;
 }
